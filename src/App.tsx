@@ -8,11 +8,13 @@ import Contact from './pages/Contact';
 import { ShoppingCartProvider } from './contexts/ShoppingCartContext';
 import All from './pages/All';
 import MultiStepFrom from './components/MultiStepFrom';
+import Announcement from './components/Announcement';
 
 function App() {
   
   return (
     <ShoppingCartProvider>
+      <Announcement/>
       <Navbar/>
       <div className="App">
         <Routes> 

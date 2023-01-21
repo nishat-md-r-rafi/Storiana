@@ -4,10 +4,26 @@ import {Link} from 'react-router-dom'
 import Home from '../../pages/Home/Home';
 import { useShoppingCart } from '../../contexts/ShoppingCartContext';
 import { handleClick } from '../shoppingCart/ShoppingCart';
+import { useState } from 'react';
 
 export default function Navbar() {
   const {openCart, getItemQuantity, closeCart, cartQuantity} = useShoppingCart()
   // console.log(closeCart)
+
+  const [search, setSearch] = useState("")
+
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) =>{
+    if (e.key === 'Enter') {
+      console.log("Enter")
+    }
+  }
+
+  const handleSearch = () => {
+    console.log(search) 
+    
+  }
+
   
   return (
     <div className='navBar'>
@@ -17,6 +33,11 @@ export default function Navbar() {
         <Link to='/about' className="navItem">About</Link>
         <Link to='/contact' className="navItem">Contact Us</Link>
         <Link to='/login' className="navItem">LogIn</Link>
+      </div>
+
+      <div className="center">
+        <input type="text" id='search' onKeyDown={handleKeyDown}/>
+        <label htmlFor="search" onClick={handleSearch}>Search</label>
       </div>
       <div className="right">
         <img className='rightItem' src="/imgs/account.png" alt=""  />          

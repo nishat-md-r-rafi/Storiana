@@ -7,18 +7,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Info = styled.div`
-  opacity: 0;
+  /* opacity: 0; */
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -100%;
+  /* left: 0; */
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.5s ease;
+  transition: all .5s ease-in-out;
   cursor: pointer;
 `;
 
@@ -32,9 +32,10 @@ const Container = styled.div`
   justify-content: center;
   background-color: #f5fbfd;
   position: relative;
+  overflow: hidden;
 
   &:hover ${Info}{
-    opacity: 1;
+    top: 0;
   }
 `;
 
@@ -60,10 +61,11 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px;
-  transition: all 0.5s ease;
+  /* transition: all 0.5s ease; */
   &:hover {
     background-color: #e9f5f5;
     transform: scale(1.1);
+    transition: all 0.5s ease;
   }
 `;
 

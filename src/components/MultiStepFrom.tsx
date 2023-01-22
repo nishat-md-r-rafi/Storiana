@@ -2,6 +2,7 @@ import React from 'react'
 import { useMultiStepForm } from '../hooks/useMultiStepForm'
 import { AccountForm, AddressFrom, UserFrom } from './FormSections'
 import { useState } from 'react';
+import  styled  from 'styled-components';
 
 
 type dataProps = {
@@ -21,6 +22,49 @@ const  INITIAL_DATA = {
     name: "",
     email: "",
 }
+
+const Container = styled.div`
+    background-color: #f4eaea;
+    width: 100vw;
+    height: 100vh;  
+    position: relative;
+    display: grid;
+    place-items:center;
+`;
+
+const Wrapper = styled.div`
+    background-color: #e03636;
+    padding: 5rem;
+    border-radius:5px;
+    margin: auto;
+    position: relative;
+`;
+
+const Button = styled.button`
+background-color: white;
+padding: 1rem;
+border-radius: 5px;
+margin: 5px;
+font-size:15px;
+
+&:hover{
+    background-color:black;
+    color:white;
+    font-size:15px;
+}
+`;
+
+
+const Count = styled.div`
+    position:absolute;
+    top:15px;
+    right: 15px;
+    color: white;
+
+`;
+
+
+
 
 export default function MultiStepFrom() {
 
@@ -42,22 +86,22 @@ export default function MultiStepFrom() {
     }
 
     return (
-    <div style={{padding:'30px', marginTop:'20px', borderRadius:'5px', maxWidth: 'max-content'}}>
+    <Container>
 
-        <div>
-        <div>{currentStepIndex +1} / {steps.length}</div>
+        <Wrapper>
+            <Count>{currentStepIndex +1} / {steps.length}</Count>
 
-        <div >
-        {step}
-        </div>
+            <div >
+            {step}
+            </div>
 
-        <div>
-        {!isFirst && <button onClick={previous}>previous</button>}
-        {isLast?<button onClick={handleFinish}>Finish</button> : <button onClick={next}>next</button>}
-        </div>
+            <div>
+            {!isFirst && <Button onClick={previous}>previous</Button>}
+            {isLast?<Button onClick={handleFinish}>Finish</Button> : <Button onClick={next}>next</Button>}
+            </div>
 
-    </div>
+        </Wrapper>
     
-    </div>
+    </Container>
   )
 }

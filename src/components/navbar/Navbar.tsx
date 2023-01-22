@@ -5,6 +5,7 @@ import Home from '../../pages/Home/Home';
 import { useShoppingCart } from '../../contexts/ShoppingCartContext';
 import { handleClick } from '../shoppingCart/ShoppingCart';
 import { useState } from 'react';
+import Product from './../Product';
 
 export default function Navbar() {
   const {openCart, getItemQuantity, closeCart, cartQuantity} = useShoppingCart()
@@ -30,6 +31,7 @@ export default function Navbar() {
       <div className="left">
         <Link to='/' className="navItem">Home</Link>
         <Link to='/store' className="navItem">Store</Link>
+        <Link to='/categories' className="navItem">Product</Link>
         <Link to='/about' className="navItem">About</Link>
         <Link to='/contact' className="navItem">Contact Us</Link>
         <Link to='/login' className="navItem">LogIn</Link>

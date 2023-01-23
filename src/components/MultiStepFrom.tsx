@@ -36,7 +36,7 @@ const Wrapper = styled.div`
     background-color: #e03636;
     padding: 5rem;
     border-radius:5px;
-    margin: auto;
+    /* margin: auto; */
     position: relative;
 `;
 

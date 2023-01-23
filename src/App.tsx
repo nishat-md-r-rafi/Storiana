@@ -13,6 +13,7 @@ import Newsletter from './components/Newsletter';
 import Footer from './components/Footer';
 import ProductList from './pages/ProductList';
 import Product from './pages/Product';
+import Cart from './pages/Cart';
 
 function App() {
   
@@ -29,6 +30,7 @@ function App() {
           <Route path='/contact' element={<Contact />}/>
           <Route path='/product' element={<Product />}/>
           <Route path='/login' element={<MultiStepFrom />}/>
+          <Route path='/cart' element={<Cart />}/>
         </Routes> 
       </div>
       <Newsletter/>

@@ -32,8 +32,10 @@ export default function Navbar() {
         <Link to='/' className="navItem">Home</Link>
         <Link to='/store' className="navItem">Store</Link>
         <Link to='/categories' className="navItem">Product</Link>
+        <Link to='/cart' className="navItem">Cart</Link>
+        <Link to='/categories' className="navItem">Product</Link>
         <Link to='/about' className="navItem">About</Link>
-        <Link to='/contact' className="navItem">Contact Us</Link>
+        {/* <Link to='/contact' className="navItem">Contact Us</Link> */}
         <Link to='/login' className="navItem">LogIn</Link>
       </div>
 

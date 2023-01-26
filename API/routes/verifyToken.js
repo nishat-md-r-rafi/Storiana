@@ -6,14 +6,15 @@ const verifyToken = (req, res, next) => {
 
     
     if (authHeader){
-        const token = authHeader.split(' ')[1]
-        jwt.verify(token, process.env.JWT_SEC, (err, user) => {
-            if (err) {res.status(403).json('Token is invalid!!');}
-            else {
+        const token = authHeader.split(" ")[1];
+        jwt.verify(token, process.env.JWT_SEC, (err, user) =>{
+            if (err){
+                res.status(403).json("Invalid Token!!");
+            } else {
                 req.user = user;
-                next();
+                next(); // very important otherwise wont be called
             }
-        })
+    })
     }
     else{
         res.status(401).json("UnAuthenticated!!")

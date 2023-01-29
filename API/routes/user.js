@@ -1,15 +1,10 @@
 const router = require('express').Router();
 const { PassThrough } = require('stream');
-<<<<<<< HEAD
 const {verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} = require('./verifyToken');
 const JWT = require('jsonwebtoken');
 const CryptoJS = require('crypto-js');
 const User = require('../models/User');
-=======
-const {verifyToken, verifyTokenAndAuthorization} = require('./verifyToken');
-const JWT = require('jsonwebtoken');
-const CryptoJS = require('crypto-js');
-const User = require('../models/User');
+
 
 router.put("/:id",verifyTokenAndAuthorization, async (req, res) => {
     // encrypt the password first
@@ -25,7 +20,6 @@ router.put("/:id",verifyTokenAndAuthorization, async (req, res) => {
         console.error(err);
     }
 });
->>>>>>> refs/remotes/origin/main
 
 router.put("/:id",verifyTokenAndAuthorization, async (req, res) => {
     // encrypt the password first

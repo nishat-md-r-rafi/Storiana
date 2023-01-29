@@ -6,7 +6,6 @@ const verifyToken = (req, res, next) => {
 
     
     if (authHeader){
-<<<<<<< HEAD
         const token = authHeader.split(" ")[1];
         jwt.verify(token, process.env.JWT_SEC, (err, user) =>{
             if (err){
@@ -16,16 +15,6 @@ const verifyToken = (req, res, next) => {
                 next(); // very important otherwise wont be called
             }
     })
-=======
-        const token = authHeader.split(' ')[1]
-        jwt.verify(token, process.env.JWT_SEC, (err, user) => {
-            if (err) {res.status(403).json('Token is invalid!!');}
-            else {
-                req.user = user;
-                next();
-            }
-        })
->>>>>>> refs/remotes/origin/main
     }
     else{
         res.status(401).json("UnAuthenticated!!")

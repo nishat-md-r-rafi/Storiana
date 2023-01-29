@@ -32,6 +32,10 @@ app.get('/', (req, res) => {
     res.send("Hello to Stotiana!")
 })
 
+app.get('/', (req, res) => {
+    res.send("Hello to Stotiana!")
+})
+
 app.listen(port, ()=>{
     console.log('Backend is listening on port', port);
 })

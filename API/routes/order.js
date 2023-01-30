@@ -24,10 +24,35 @@ router.put('/update/:id', verifyTokenAndAdmin, async (req, res) => {
 });
 
 // DELETE AN ORDER
+router.delete('/delete/:id', verifyTokenAndAdmin, async (req, res) => {
+    try {
+        await Order.findByIdAndDelete(req.params.id)
+        res.status(200).json("Order is deleted successfully")
+    } catch(err){
+        res.status(500).json(err);
+    }
+})
 
 // GET A ORDER
 
 // GET ALL ORDERS
+
+// Advanced Options
+router.get('/income', verifyTokenAndAdmin, async (req, res) => {
+    const date = new Date();
+    const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
+    const previousMonth = new Date(new Date().setMonth(lastMonth -1));
+
+    try {
+        data = await Order.aggregate(
+            [
+                {$match: {createdAt: {$gte: previousMonth}}},
+            ]
+        )
+    } catch (err) {
+        res.status(500).send(err);
+    }
+})
 
 
 module.exports = router

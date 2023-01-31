@@ -11,7 +11,7 @@
 /Client/coverage
 
 # production
-# /Client/build
+/Client/build
 
 # misc
 /Client/.DS_Store
@@ -19,7 +19,7 @@
 /Client/.env.development.local
 /Client/.env.test.local
 /Client/.env.production.local
-/Client/
+
 /Client/npm-debug.log*
 /Client/yarn-debug.log*
 /Client/yarn-error.log*

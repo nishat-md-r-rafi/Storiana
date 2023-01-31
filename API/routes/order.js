@@ -33,9 +33,25 @@ router.delete('/delete/:id', verifyTokenAndAdmin, async (req, res) => {
     }
 })
 
-// GET A ORDER
-
-// GET ALL ORDERS
+//GET USER ORDERS
+router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
+    try {
+      const orders = await Order.find({ userId: req.params.userId });
+      res.status(200).json(orders);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+  
+  // //GET ALL
+router.get("/", verifyTokenAndAdmin, async (req, res) => {
+    try {
+      const orders = await Order.find();
+      res.status(200).json(orders);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 // Advanced Options
 router.get('/income', verifyTokenAndAdmin, async (req, res) => {
@@ -44,11 +60,17 @@ router.get('/income', verifyTokenAndAdmin, async (req, res) => {
     const previousMonth = new Date(new Date().setMonth(lastMonth -1));
 
     try {
-        data = await Order.aggregate(
-            [
+        const income = await Order.aggregate(
+            [   
+                // 1st stage
                 {$match: {createdAt: {$gte: previousMonth}}},
+                // 2nd Stage
+                {$project: {month: {$month: "$createdAt"}}},
+                // 3rd Stage
+                {$group: {_id: "$month", total: {$sum: "$sales"}}},
             ]
-        )
+        );
+        res.send(income).status(200);
     } catch (err) {
         res.status(500).send(err);
     }

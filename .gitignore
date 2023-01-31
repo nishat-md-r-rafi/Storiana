@@ -11,7 +11,7 @@
 /Client/coverage
 
 # production
-/Client/build
+# /Client/build
 
 # misc
 /Client/.DS_Store
